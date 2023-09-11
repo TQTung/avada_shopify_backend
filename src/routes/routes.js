@@ -8,21 +8,17 @@ const router = new Router({
 });
 
 router.get("/todos", todoListHandler.getTodos);
-router.post(
-  "/todos/createTodo",
-  todoInputMiddleware,
-  todoListHandler.addNewTodo
-);
-router.put("/todos/updateComplete/:id", todoListHandler.completeTodo);
+router.post("/todos", todoInputMiddleware, todoListHandler.addNewTodo);
+router.put("/todo/:id", todoListHandler.completeTodo);
 router.put(
-  "/todos/updateCompleteTodos",
+  "/todos",
   todoInputArrNumberMiddleware,
   todoListHandler.updateCompleteTodos
 );
 // router.put("/todos/undoComplete/:id", todoListHandler.undoCompleteTodo);
-router.delete("/todos/deleteTodo/:id", todoListHandler.deleteTodo);
-router.post(
-  "/todos/deleteTodos",
+router.delete("/todo/:id", todoListHandler.deleteTodo);
+router.put(
+  "/todos/delete-all",
   todoInputArrNumberMiddleware,
   todoListHandler.deleteTodos
 );
